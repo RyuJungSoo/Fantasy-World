@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Monster
+  - Bullet
+  - Ground
+  - Area
+  - Object
+  - MonsterHpBar
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Object
+  - Water
+  - UI
+  - Boss
+  - Player
+  - Ground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: stage
+    uniqueID: 2165637633
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: monster
+    uniqueID: 3830233217
+    locked: 0
+  - name: Bullet
+    uniqueID: 2676827559
+    locked: 0
