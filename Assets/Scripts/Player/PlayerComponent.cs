@@ -22,6 +22,7 @@ public class PlayerComponent : MonoBehaviour
     // 변수
     public bool isAttack = false;
     public bool isAttacked = false;
+    public bool isSlow = false;
     private float curTime;
     public float coolTime = 0; // 일반 공격 쿨타임
     public Transform pos;
@@ -203,6 +204,10 @@ public class PlayerComponent : MonoBehaviour
 
     public void Slow(float SlowTime) // 슬로우 디버프
     {
+        if (isSlow)
+            return;
+
+        isSlow = true;
         GetComponent<SpriteRenderer>().color = new Color(255/255f,30/255f,219/255f); // 유니티에서는 색상을 0부터 1사이의 실수값으로 변환해서 색상을 섞어넣음
         OriginSpeed = speed;
         speed = OriginSpeed - 0.5f;
@@ -213,6 +218,7 @@ public class PlayerComponent : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
         speed = OriginSpeed;
+        isSlow = false;
     }
 
     private void OnDrawGizmos() // 공격 범위 시각화 
