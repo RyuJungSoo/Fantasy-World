@@ -8,12 +8,9 @@ public class PageButtonComponent : MonoBehaviour
     public bool isPrev;
     public void OnClick()
     {
-
         if (isPrev == false)
             UI.GetComponent<MainMenuUIController>().NextPage();
         else
             UI.GetComponent<MainMenuUIController>().PrevPage();
     }
-
-    
 }

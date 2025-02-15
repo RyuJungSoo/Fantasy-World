@@ -9,7 +9,6 @@ public class LevelUpButtonComponent : MonoBehaviour
 
     public void OnClick()
     {
-
         flag = GameManager.Instance.skillLevelUp(SkillIndex);
 
         if (flag == true)

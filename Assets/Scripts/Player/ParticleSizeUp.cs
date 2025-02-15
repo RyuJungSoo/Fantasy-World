@@ -29,6 +29,4 @@ public class ParticleSizeUp : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
-
 }

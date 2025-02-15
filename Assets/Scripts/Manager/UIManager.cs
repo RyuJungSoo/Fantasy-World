@@ -16,9 +16,6 @@ public class UIManager : MonoBehaviour
     public Text Player_MpBarText;
     public GameObject Player_ExpBar;
     public Text Player_ExpBarText;
-
-    
-
     private Slider Player_HpSlider;
     private Slider Player_MpSlider;
     private Slider Player_ExpSlider;
@@ -29,7 +26,6 @@ public class UIManager : MonoBehaviour
     public GameObject Clear_Text;
     public TextMeshProUGUI PlayTime;
     public TextMeshProUGUI KillCount;
-
     public Text Player_levelText;
 
     // SkillUI
@@ -53,7 +49,6 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
             //DontDestroyOnLoad(this.gameObject);
-
         }
 
         else
@@ -102,11 +97,9 @@ public class UIManager : MonoBehaviour
     {
         Player_HpSlider.maxValue = GameManager.Instance.playerMaxHp();
         Player_HpSlider.value = GameManager.Instance.playerHp();
-        
 
         if (Player_HpSlider.value < 0)
             Player_HpSlider.value = 0;
-
 
         float Hp = Mathf.Round(GameManager.Instance.playerHp());
         Player_HpBarText.text =  Hp.ToString() + " / " + GameManager.Instance.playerMaxHp().ToString();
@@ -123,7 +116,6 @@ public class UIManager : MonoBehaviour
     {
         Player_ExpSlider.value = GameManager.Instance.playerExp();
         Player_ExpSlider.maxValue = GameManager.Instance.playerMaxExp();
-
     }
 
     public void LevelUIUpdate()
@@ -189,7 +181,6 @@ public class UIManager : MonoBehaviour
 
     public void GameOverUI_ON(bool isClear)
     {
-        
         GameOverUI.SetActive(true);
 
         if (isClear == false)
@@ -269,7 +260,6 @@ public class UIManager : MonoBehaviour
     {
         if (BossUI.active == false)
             return;
-
         BossHpBar.fillAmount = 1 * Hp / MaxHp;
     }
 }

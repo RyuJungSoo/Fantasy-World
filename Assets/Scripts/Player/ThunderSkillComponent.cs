@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class ThunderSkillComponent : MonoBehaviour
 {
     // ÇÃ·¹ÀÌ¾î °ü·Ã ¹× ÄðÅ¸ÀÓ
@@ -43,28 +42,21 @@ public class ThunderSkillComponent : MonoBehaviour
         {
             //Debug.Log("ÄðÅ¸ÀÓ ¾È Ã¡À½");
             curTime -= Time.deltaTime;
-
         }
-
-        
         Skill();
     }
 
     public void LevelUp()
     {
-        
-            SkillLevel += 1;
-            skillTime += 0.5f;
-            radius += 0.2f;
-        
+        SkillLevel += 1;
+        skillTime += 0.5f;
+        radius += 0.2f;
     }
 
     public void Skill()
     {
         if (curTime <= 0 && playerComponent.isAttack == false)
         {
-
-
             if (Input.GetKey(KeyCode.C) && isOn == false )
             {
                 if (GameManager.Instance.playerMp() < MpUse)
@@ -85,16 +77,7 @@ public class ThunderSkillComponent : MonoBehaviour
                 curTime = skillTime;
                 StartCoroutine(ContinueTime());
             }
-
-            else
-            {
-                
-
-            }
-
         }
-
-
 
         if (isOn == true)
         {
@@ -115,7 +98,6 @@ public class ThunderSkillComponent : MonoBehaviour
         {
             //Debug.Log("ÄðÅ¸ÀÓ ¾È Ã¡À½");
             curTime -= Time.deltaTime;
-
         }
 
         if (!Input.GetKey(KeyCode.LeftControl) && (!Input.GetKey(KeyCode.Z) && !Input.GetKey(KeyCode.X) && !Input.GetKey(KeyCode.C) && !Input.GetKey(KeyCode.V) && Input.anyKey || !Input.anyKey))
@@ -157,7 +139,6 @@ public class ThunderSkillComponent : MonoBehaviour
 
         while (curTime >= 0)
         {
-
             continue_skill.fillAmount = (1.0f * (skillTime - curTime) / skillTime);
             yield return new WaitForFixedUpdate();
         }

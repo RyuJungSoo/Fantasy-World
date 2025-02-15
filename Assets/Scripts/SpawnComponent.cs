@@ -6,7 +6,6 @@ public class SpawnComponent : MonoBehaviour
 {
     public Transform[] spawnPoint;
 
-    
     private float curTime;
     public float SpawnCoolTime = 3f; // 스폰 쿨타임
     private int SpawnLevel;
@@ -29,8 +28,6 @@ public class SpawnComponent : MonoBehaviour
         if (GameManager.Instance.isGameover == true)
             return;
 
-
-
         if (curTime <= 0)
         {
             SpawnLevel = Mathf.FloorToInt(GameManager.Instance.GameTime / LevelChangeSec);
@@ -50,15 +47,12 @@ public class SpawnComponent : MonoBehaviour
 
         else
             curTime -= Time.deltaTime;
-
-        
     }
 
     void Spawn(int SpawnIndex)
     {
         if (GameManager.Instance.isGameover == false)
         {
-            
             GameObject enemy = GameManager.Instance.pool.monsterGet(SpawnIndex);
             enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position; // 자식 오브젝트만 선택되도록 랜덤 시작은 1부터
         }
@@ -73,6 +67,5 @@ public class SpawnComponent : MonoBehaviour
         GameManager.Instance.Stop();
        
         Debug.Log("보스 시작");
-
     }
 }

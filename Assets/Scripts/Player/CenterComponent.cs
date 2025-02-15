@@ -75,7 +75,6 @@ public class CenterComponent : MonoBehaviour
         }
 
     }
-
     void BulletSetting()
     {
         for (int index = 0; index < count; index++)
@@ -91,7 +90,6 @@ public class CenterComponent : MonoBehaviour
                 bullet  = GameManager.Instance.pool.Get(prefabId).transform;
                 bullet.parent = transform;
             }
-            
 
             bullet.localPosition = Vector3.zero;
             bullet.localRotation = Quaternion.identity;
@@ -107,21 +105,18 @@ public class CenterComponent : MonoBehaviour
     void BulletSetting_Boss()
     {
 
-
         for (int index = 0; index < count; index++)
         {
             Transform bullet;
             if (index < transform.childCount)
             {
                 bullet = transform.GetChild(index);
-
             }
             else
             {
                 bullet = GameManager.Instance.pool.Get(prefabId).transform;
                 bullet.parent = transform;
             }
-
 
             bullet.localPosition = Vector3.zero;
             bullet.localRotation = Quaternion.identity;

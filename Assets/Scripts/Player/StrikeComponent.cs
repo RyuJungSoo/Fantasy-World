@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class StrikeComponent : MonoBehaviour
 {
-
     // 컴포넌트 및 게임 오브젝트
     private PlayerComponent playerComponent; // 플레이어의 관한 정보를 알려주는 컴포넌트
     private Rigidbody2D playerRigidbody; // 플레이어 캐릭터의 리지드바디
@@ -26,20 +25,17 @@ public class StrikeComponent : MonoBehaviour
         playerComponent = GetComponent<PlayerComponent>();
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
-        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-            Strike();
         if (curTime > 0)
         {
             //Debug.Log("쿨타임 안 찼음");
             curTime -= Time.deltaTime;
-
         }
+        Strike();
     }
 
     public void LevelUp()
@@ -55,7 +51,6 @@ public class StrikeComponent : MonoBehaviour
     {
         if (curTime <= 0 && playerComponent.isAttack == false)
         {
-            
             if (Input.GetKey(KeyCode.Z))
             {
                 if (GameManager.Instance.playerMp() < MpUse)
@@ -65,9 +60,9 @@ public class StrikeComponent : MonoBehaviour
                 }
 
                 //Debug.Log("스트라이크");
-                GameManager.Instance.playSoundEffect(4,5);
+                GameManager.Instance.playSoundEffect(4, 5);
                 GameManager.Instance.playerMpUse(MpUse);
-                
+
                 Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(playerComponent.pos.position, playerComponent.boxSize, 0);
                 foreach (Collider2D collider in collider2Ds)
                 {
@@ -75,35 +70,17 @@ public class StrikeComponent : MonoBehaviour
                     {
                         //Debug.Log(collider.tag);
                         collider.GetComponent<MonsterComponent>().TakeDamage(damage);
-                        
-                        collider.transform.Translate(new Vector3(transform.localScale.x * playerComponent.power, 0, 0));
 
+                        collider.transform.Translate(new Vector3(transform.localScale.x * playerComponent.power, 0, 0));
                     }
                 }
 
-                
                 playerComponent.isAttack = true;
                 playerAnimator.SetBool("isWalk", false);
                 playerAnimator.SetTrigger("Strike");
                 curTime = coolTime;
                 StartCoroutine(CoolTime(coolTime));
             }
-
-            else
-            {
-
-                //playerComponent.AttackState_false();//playerComponent.isAttack = false;
-                //playerAnimator.SetBool("isStrike", false);
-            }
-
-
-        }
-
-        else
-        {
-            
-            //Debug.Log("쿨타임 안 찼음");
-            curTime -= Time.deltaTime;
         }
 
         if (!Input.GetKey(KeyCode.LeftControl) && (!Input.GetKey(KeyCode.Z) && !Input.GetKey(KeyCode.X) && !Input.GetKey(KeyCode.C) && !Input.GetKey(KeyCode.V) && Input.anyKey || !Input.anyKey))
@@ -115,7 +92,6 @@ public class StrikeComponent : MonoBehaviour
     IEnumerator CoolTime(float cool)
     {
         print("쿨타임 코루틴 실행");
-
         while (cool >= 0)
         {
             cool -= Time.deltaTime;
@@ -125,5 +101,4 @@ public class StrikeComponent : MonoBehaviour
         print("쿨타임 코루틴 완료");
         cool_skill.fillAmount = 0;
     }
-
 }

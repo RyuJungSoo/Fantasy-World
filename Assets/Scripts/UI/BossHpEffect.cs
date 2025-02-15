@@ -13,7 +13,6 @@ public class BossHpEffect : MonoBehaviour
     {
         BossHpBar = GetComponent<Image>();
         spriteRenderer = GameObject.Find("Boss").GetComponent<SpriteRenderer>();
-
     }
 
     void Update()
@@ -36,8 +35,6 @@ public class BossHpEffect : MonoBehaviour
                 BossHpBar.fillAmount = 1;
                 spriteRenderer.color = new Color(1, 1, 1, 1);
                 BossStart();
-
-
             }
         }
     }
@@ -48,5 +45,4 @@ public class BossHpEffect : MonoBehaviour
         GameManager.Instance.Resume();
         enabled = false;
     }
-
 }

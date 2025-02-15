@@ -27,7 +27,6 @@ public class MonsterBullet : MonoBehaviour
     {
         monsterComponent = GetComponent<MonsterComponent>();
         monsterAnimator = GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
@@ -39,27 +38,17 @@ public class MonsterBullet : MonoBehaviour
 
     private void BulletAttack() // 탄알 소환 및 발사
     {
-
         if (curTime <= 0 && monsterComponent.isAttacked == false && monsterComponent.isDead == false && monsterComponent.isFreeze == false)
         {
-
-
             if (PlayerCheck() == true)
             {
-                
-
                 monsterComponent.isAttack = true;
                 monsterAnimator.SetTrigger("Attack");
                 Fire();
 
-
                 Debug.Log("탄알 발사");
                 curTime = coolTime;
-                 
-
             }
-
-
         }
 
         else
@@ -72,7 +61,6 @@ public class MonsterBullet : MonoBehaviour
     private void Fire()
     {
         GameObject bullet;
-
 
         bullet = GameManager.Instance.pool.Get(1);
         bullet.transform.position = transform.position + new Vector3(transform.localScale.x * 2f, 0, 0);
@@ -110,7 +98,6 @@ public class MonsterBullet : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos() // 공격 범위 시각화 
     {
-
         Handles.color = new Color(255f, 255f, 255f, 0.2f);
         // DrawSolidArc(시작점, 노멀벡터(법선벡터), 그려줄 방향 벡터, 각도, 반지름)
         Handles.DrawSolidArc(transform.position, Vector3.forward, new Vector3(transform.localScale.x, 0, 0), angleRange / 2, radius);

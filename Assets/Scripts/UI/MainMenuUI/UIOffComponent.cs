@@ -7,7 +7,6 @@ public class UIOffComponent : MonoBehaviour
 {
     public GameObject UI;
 
-
     public void OnClick()
     {
         UI.active = false;

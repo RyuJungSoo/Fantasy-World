@@ -41,35 +41,27 @@ public class FireSkillComponent : MonoBehaviour
         {
             //Debug.Log("쿨타임 안 찼음");
             curTime -= Time.deltaTime;
-
         }
-
-        
-            Skill();
-
+        Skill();
     }
 
     public void LevelUp()
     {
-
-            SkillLevel += 1;
-            skillTime += 0.5f;
-            GameObject center = this.gameObject.transform.GetChild(1).gameObject;
-            center.SetActive(true);
-            center.GetComponent<CenterComponent>().LevelUp(0.2f, 1);
+        SkillLevel += 1;
+        skillTime += 0.5f;
+        GameObject center = this.gameObject.transform.GetChild(1).gameObject;
+        center.SetActive(true);
+        center.GetComponent<CenterComponent>().LevelUp(0.2f, 1);
             
-            if(isOn == false)
-                center.SetActive(false);
+        if(isOn == false)
+            center.SetActive(false);
         
     }
-
 
     public void Skill()
     {
         if (curTime <= 0 && playerComponent.isAttack == false)
         {
-
-
             if (Input.GetKey(KeyCode.V) && isOn == false)
             {
                 if (GameManager.Instance.playerMp() < MpUse)
@@ -82,7 +74,6 @@ public class FireSkillComponent : MonoBehaviour
                 GameManager.Instance.playSoundEffect(1, 5);
                 GameManager.Instance.playerMpUse(MpUse);
 
-
                 playerComponent.isAttack = true;
                 isOn = true;
                 playerAnimator.SetBool("isWalk", false);
@@ -92,11 +83,7 @@ public class FireSkillComponent : MonoBehaviour
                 StartCoroutine(ContinueTime());
             }
 
-
-
         }
-
-
 
         if (!Input.GetKey(KeyCode.LeftControl) && (!Input.GetKey(KeyCode.Z) && !Input.GetKey(KeyCode.X) && !Input.GetKey(KeyCode.C) && !Input.GetKey(KeyCode.V) && Input.anyKey || !Input.anyKey))
         {
@@ -110,7 +97,6 @@ public class FireSkillComponent : MonoBehaviour
 
         while (curTime >= 0)
         {
-            
             cool_skill.fillAmount = (1.0f * (coolTime - curTime)/coolTime);
             yield return new WaitForFixedUpdate();
         }
@@ -118,14 +104,12 @@ public class FireSkillComponent : MonoBehaviour
         cool_skill.fillAmount = 0;
     }
 
-
     IEnumerator ContinueTime()
     {
         print("지속시간 코루틴 실행");
 
         while (curTime >= 0)
         {
-
             continue_skill.fillAmount = (1.0f * (skillTime - curTime) / skillTime);
             yield return new WaitForFixedUpdate();
         }

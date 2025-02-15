@@ -12,5 +12,4 @@ public class ContinueButtonComponent : MonoBehaviour
         GameManager.Instance.Resume();
         GameManager.Instance.GetComponent<AudioSource>().UnPause();
     }
-
 }

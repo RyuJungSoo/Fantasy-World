@@ -12,8 +12,6 @@ public class PotionComponent : MonoBehaviour
 
     public AudioClip potionSoundEffect;
 
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

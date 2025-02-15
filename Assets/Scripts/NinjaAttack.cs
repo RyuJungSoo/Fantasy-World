@@ -24,7 +24,6 @@ public class NinjaAttack : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     private float smoothTime = 0.3f;
 
-
     private Vector3 target_pos;
 
     void Start()
@@ -36,10 +35,8 @@ public class NinjaAttack : MonoBehaviour
 
     void Update()
     {
-
         if (GameManager.Instance.isGameover == false)
         {
-
             Pattern();
             if (isMove == true)
             {
@@ -47,12 +44,10 @@ public class NinjaAttack : MonoBehaviour
                 if ((transform.position.x >= target_pos.x - 0.1f && transform.position.x <= target_pos.x + 0.1f) || (transform.position.y >= target_pos.y - 0.1f && transform.position.y <= target_pos.y + 0.1f))
                 {
                     Invoke("MoveStop", 0.5f);
-                    
                 }
             }
         }
     }
-
 
     private bool PlayerCheck()
     {
@@ -84,42 +79,28 @@ public class NinjaAttack : MonoBehaviour
     {
         if (curTime <= 0 && monsterComponent.isAttacked == false && monsterComponent.isDead == false && monsterComponent.isFreeze == false)
         {
-
             if (PlayerCheck() == true)
             {
-
                 monsterComponent.isAttack = true;
                 monsterCollider.isTrigger = true;
                 monsterAnimator.SetTrigger("Batto");
                 Invoke("MoveStart", PauseTime);
 
-
-
-
-
                 curTime = coolTime;
-
             }
-
-
         }
 
         else
         {
             curTime -= Time.deltaTime;
         }
-
-
     }
-
-
 
     void MoveStart()
     {
         target_pos = monsterComponent.player.transform.position;
         isMove = true;        
         monsterAnimator.SetTrigger("Attack");
-
     }
 
     void MoveStop()
@@ -133,7 +114,6 @@ public class NinjaAttack : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos() // 공격 범위 시각화 
     {
-
         Handles.color = new Color(255f, 255f, 0f, 0.2f);
         // DrawSolidArc(시작점, 노멀벡터(법선벡터), 그려줄 방향 벡터, 각도, 반지름)
         Handles.DrawSolidArc(transform.position, Vector3.forward, new Vector3(transform.localScale.x, 0, 0), angleRange / 2, radius);

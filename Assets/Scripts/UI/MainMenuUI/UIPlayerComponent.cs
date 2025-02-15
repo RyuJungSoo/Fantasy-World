@@ -35,10 +35,8 @@ public class UIPlayerComponent : MonoBehaviour
 
     private void changeSprite()
     {
-
         if (curTime < 0)
         {
-
             index++;
             image.sprite = walkImages[index];
             curTime = pauseTime;
@@ -53,7 +51,5 @@ public class UIPlayerComponent : MonoBehaviour
     {
         changeSprite();
         transform.position = transform.position + new Vector3(speed * Time.deltaTime, 0, 0);
-
     }
-
 }

@@ -81,9 +81,7 @@ public class GameManager : MonoBehaviour
     // 플레이어 효과음 출력
     public void playSoundEffect(int index, float volume)
     {
-
-       playerAudio.PlayOneShot(audioClips[index], volume);
-        
+        playerAudio.PlayOneShot(audioClips[index], volume);
     }
     public void Boss_playSoundEffect(int index, float volume)
     {
@@ -169,7 +167,6 @@ public class GameManager : MonoBehaviour
         playerComponent.damage += 0.5f;
         playerComponent.maxExp += 5;
         UIManager.Instance.LevelUIUpdate();
-
     }
 
     public bool skillLevelUp(int index)
@@ -280,7 +277,6 @@ public class GameManager : MonoBehaviour
         while (strikeComponent.SkillLevel < 10)
             strikeComponent.LevelUp();
         UIManager.Instance.SkillLevelUIUpdate(5, player.GetComponent<StrikeComponent>().SkillLevel);
-
         
     }
 
@@ -304,7 +300,6 @@ public class GameManager : MonoBehaviour
 
         int RandomNum = Random.Range(1, 100);
         
-
         if (DeadFlag == false)
         {
             if (DropMode == 1)

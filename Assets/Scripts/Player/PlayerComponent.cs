@@ -18,7 +18,6 @@ public class PlayerComponent : MonoBehaviour
     public float power;
     public float damage = 10;
 
-
     // 변수
     public bool isAttack = false;
     public bool isAttacked = false;
@@ -36,7 +35,6 @@ public class PlayerComponent : MonoBehaviour
     private Animator playerAnimator; // 플레이어 캐릭터의 애니메이터
     
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -44,12 +42,10 @@ public class PlayerComponent : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
-        
 
         this.level = level;
         this.Hplevel = Hplevel;
         this.Mplevel = Mplevel;
-        
     }
 
     // Update is called once per frame
@@ -66,8 +62,6 @@ public class PlayerComponent : MonoBehaviour
             Move();
         // 공격 실행
         Attack();
-
- 
     }
 
     // 입력값에 따라 캐릭터를 움직임
@@ -101,23 +95,16 @@ public class PlayerComponent : MonoBehaviour
             center.localScale = new Vector2(-1, 1);
         }
 
-        
-
         // 리지드바디를 이용해 게임 오브젝트 위치 변경
         playerRigidbody.MovePosition(playerRigidbody.position + new Vector2(x,y));
-        
-        
     }
 
     private void Attack()
     {
-
-
         if (curTime <= 0)
         {
             if (Input.GetKey(KeyCode.LeftControl))
             {
-
                 StartCoroutine(AttackSound());
                 Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
                 foreach (Collider2D collider in collider2Ds)
@@ -135,12 +122,7 @@ public class PlayerComponent : MonoBehaviour
                     isAttack = true;
                     playerAnimator.SetBool("isAttack", true);
                     curTime = coolTime;
-                
             }
-
-
-
-
         }
 
         else
@@ -148,7 +130,6 @@ public class PlayerComponent : MonoBehaviour
             playerAnimator.SetBool("isAttack", false);
             curTime -= Time.deltaTime;
         }
-
 
         if (!Input.GetKey(KeyCode.LeftControl) && (!Input.GetKey(KeyCode.Z) && !Input.GetKey(KeyCode.X) && !Input.GetKey(KeyCode.C) && !Input.GetKey(KeyCode.V) &&Input.anyKey || !Input.anyKey))
         {
@@ -160,7 +141,6 @@ public class PlayerComponent : MonoBehaviour
 
     private void ObjectHide()
     {
-        
         gameObject.SetActive(false);
         UIManager.Instance.GameOverUI_ON(false);
     }
@@ -168,7 +148,6 @@ public class PlayerComponent : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-
         isAttacked = true;
 
         Hp -= damage;
@@ -196,7 +175,6 @@ public class PlayerComponent : MonoBehaviour
             playerAnimator.SetTrigger("Die");
             Invoke("ObjectHide", 1.25f);
         }
-
 
         isAttacked = false;
     }

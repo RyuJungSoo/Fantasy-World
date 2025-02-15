@@ -5,13 +5,8 @@ using UnityEngine.UI;
 
 public class CoolTimeScript : MonoBehaviour
 {
+    // 쿨타임 테스트 용 코드
     public Image img_skill;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -23,7 +18,6 @@ public class CoolTimeScript : MonoBehaviour
     IEnumerator CoolTime (float cool)
     {
         print("쿨타임 코루틴 실행");
-
   
         while (cool > 1.0f)
         {

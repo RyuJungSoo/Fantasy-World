@@ -10,7 +10,6 @@ public class MonsterComponent : MonoBehaviour
     public float maxHp = 100;
     public float Damage = 2;
 
-
     // 변수
     public int itemDropMode = 1;
     public bool isBoss = false;
@@ -29,7 +28,6 @@ public class MonsterComponent : MonoBehaviour
     private Animator monsterAnimator; // 몬스터의 애니메이터
     private Renderer monsterRenderer;
 
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -37,8 +35,6 @@ public class MonsterComponent : MonoBehaviour
         monsterRig = GetComponent<Rigidbody2D>();
         monsterAnimator = GetComponent<Animator>();
         monsterRenderer = GetComponent<Renderer>();
-
-
     }
 
     // Update is called once per frame
@@ -49,19 +45,14 @@ public class MonsterComponent : MonoBehaviour
         distance = Vector2.Distance(transform.position, player.transform.position);
         if (GameManager.Instance.isGameover == false && isDead == false && isFreeze == false)
         {
-
-
             Move(distance);
-            
         }
 
         // 게임 오버시 애니메이션 idle로 돌아가기
         else
         {
             monsterAnimator.SetBool("isWalk", false);
-
         }
-
     }
 
 
@@ -70,8 +61,6 @@ public class MonsterComponent : MonoBehaviour
     {
         if (isAttack == false && isAttacked == false && isDead == false)
         {
-
-            
             if(distance > 0)
                 monsterAnimator.SetBool("isWalk", true);
 
@@ -82,7 +71,6 @@ public class MonsterComponent : MonoBehaviour
                 transform.localScale = new Vector2(1*Abs_x, 1*Abs_y);
             else
                 transform.localScale = new Vector2(-1*Abs_x, 1*Abs_y);
-
 
             Vector2 dirVec = player.GetComponent<Rigidbody2D>().position - monsterRig.position;
             Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
@@ -95,7 +83,6 @@ public class MonsterComponent : MonoBehaviour
 
     private void Object_OFF()
     {
-        //Destroy(this.gameObject);
         gameObject.SetActive(false);
     }
 
@@ -116,7 +103,6 @@ public class MonsterComponent : MonoBehaviour
             GameManager.Instance.kill += 1;
             if(isFreeze == true)
                 monsterRenderer.material.color = Color.white;
-
             
             monsterRig.velocity = new Vector3(0, 0); // 관성 지우기
             Transform dropTransform = transform;
@@ -147,7 +133,6 @@ public class MonsterComponent : MonoBehaviour
             UIManager.Instance.BossHpUIUpdate(Hp, maxHp);
         }
         DeadCheck();
-        
         isAttacked = false;
     }
 
@@ -155,7 +140,6 @@ public class MonsterComponent : MonoBehaviour
     {
         monsterRenderer.material.color = Color.cyan;
         isFreeze = true;
-
     }
 
     public void FreezeEnd()
@@ -174,8 +158,6 @@ public class MonsterComponent : MonoBehaviour
             DeadCheck();
             isAttacked = false;
         }
-
-        
     }
 
     private void OnCollisionStay2D(Collision2D collision) // 일반 공격 데미지 처리
@@ -185,7 +167,6 @@ public class MonsterComponent : MonoBehaviour
             collision.gameObject.GetComponent<PlayerComponent>().TakeDamage(Time.deltaTime*Damage);
             if (isBoss == true)
             {
-
                 Hp += Time.deltaTime * Damage;
                 if (Hp >= maxHp)
                     Hp = maxHp;
@@ -193,5 +174,4 @@ public class MonsterComponent : MonoBehaviour
             }
         }
     }
-
 }

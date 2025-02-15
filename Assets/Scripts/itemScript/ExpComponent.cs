@@ -6,14 +6,10 @@ public class ExpComponent : MonoBehaviour
 {
     public float PlusExp = 2;
     public AudioClip ExpSoundEffect;
-
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-
 
             collision.GetComponent<AudioSource>().PlayOneShot(ExpSoundEffect, 3);
 

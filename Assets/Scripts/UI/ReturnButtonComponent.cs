@@ -7,7 +7,6 @@ public class ReturnButtonComponent : MonoBehaviour
 {
     public void OnClick()
     {
-        
         SceneManager.LoadScene(0);
     }
 }

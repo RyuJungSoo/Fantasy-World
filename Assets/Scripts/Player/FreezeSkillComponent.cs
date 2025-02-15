@@ -45,28 +45,20 @@ public class FreezeSkillComponent : MonoBehaviour
         {
             //Debug.Log("쿨타임 안 찼음");
             curTime -= Time.deltaTime;
-
         }
-
-        
-            Skill();
-        
+        Skill();
     }
 
     public void LevelUp()
     {
-        
-            SkillLevel += 1;
-            skillTime += 0.5f;
-        
+        SkillLevel += 1;
+        skillTime += 0.5f;
     }
 
     public void Skill()
     {
         if (curTime <= 0 && playerComponent.isAttack == false)
         {
-
-
             if (Input.GetKey(KeyCode.X) && isOn == false )
             {
                 if (GameManager.Instance.playerMp() < MpUse)
@@ -95,12 +87,6 @@ public class FreezeSkillComponent : MonoBehaviour
                 playerAnimator.SetTrigger("Skill");
                 curTime = skillTime;
                 StartCoroutine(ContinueTime());
-            }
-
-            else
-            {
-                
-
             }
 
         }
@@ -143,14 +129,12 @@ public class FreezeSkillComponent : MonoBehaviour
         cool_skill.fillAmount = 0;
     }
 
-
     IEnumerator ContinueTime()
     {
         print("지속시간 코루틴 실행");
 
         while (curTime >= 0)
         {
-
             continue_skill.fillAmount = (1.0f * (skillTime - curTime) / skillTime);
             yield return new WaitForFixedUpdate();
         }

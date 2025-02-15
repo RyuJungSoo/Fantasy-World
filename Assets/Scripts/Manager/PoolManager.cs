@@ -79,7 +79,6 @@ public class PoolManager : MonoBehaviour
             select = Instantiate(monsterPrefabs[index], transform);
             monsterPools[index].Add(select);
             monsterHpUI.AddMonster(index,select);
-            
         }
 
         return select;
@@ -97,7 +96,6 @@ public class PoolManager : MonoBehaviour
             RandomVector = new Vector3(-1, 0);
 
         // ... 선택한 풀의 놀고 (비활성화된) 있는 게임오브젝트 접근
-
         foreach (GameObject item in itemPools[index])
         {
             if (!item.activeSelf)
@@ -123,7 +121,6 @@ public class PoolManager : MonoBehaviour
             else
                 select = Instantiate(itemPrefabs[index], pos.position + RandomVector, Quaternion.identity, transform);
             itemPools[index].Add(select);
-            
         }
 
         return select;
@@ -134,7 +131,6 @@ public class PoolManager : MonoBehaviour
         GameObject select = null;
 
         // ... 선택한 풀의 놀고 (비활성화된) 있는 게임오브젝트 접근
-
         foreach (GameObject item in Pools[index])
         {
             if (!item.activeSelf)

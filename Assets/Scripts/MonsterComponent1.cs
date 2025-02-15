@@ -31,7 +31,6 @@ public class MonsterComponent1 : MonoBehaviour
     private Animator monsterAnimator; // 몬스터의 애니메이터
     private Renderer monsterRenderer;
 
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -49,12 +48,9 @@ public class MonsterComponent1 : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.transform.position);
         if (GameManager.Instance.isGameover == false && isDead == false && isFreeze == false)
         {
-
-
             Move(distance);
             if(isRangeAttack == true)
                 RangeAttack();
-            
         }
 
         // 게임 오버시 애니메이션 idle로 돌아가기
@@ -69,21 +65,16 @@ public class MonsterComponent1 : MonoBehaviour
                 {
                     monsterRenderer.material.color = Color.white;
                     isFreeze = false;
-
                 }
             }
         }
 
     }
 
-
-
     private void Move(float distance)
     {
         if (isAttack == false && isAttacked == false && isDead == false)
         {
-
-            
             if(distance > 0)
                 monsterAnimator.SetBool("isWalk", true);
             if (transform.position.x <= player.transform.position.x)
@@ -105,10 +96,8 @@ public class MonsterComponent1 : MonoBehaviour
 
     private void RangeAttack() // 직접 공격 데미지 처리
     {
-
         if (curTime <= 0 && isAttacked == false)
         {
-            
             Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
             if(collider2Ds.Length > 0 )
             { 
@@ -125,8 +114,6 @@ public class MonsterComponent1 : MonoBehaviour
                 }
                 
             }
-
-
         }
 
         else
@@ -139,7 +126,6 @@ public class MonsterComponent1 : MonoBehaviour
 
     private void Object_OFF()
     {
-        //Destroy(this.gameObject);
         gameObject.SetActive(false);
     }
 
@@ -161,7 +147,6 @@ public class MonsterComponent1 : MonoBehaviour
             GameManager.Instance.kill += 1;
             if(isFreeze == true)
                 monsterRenderer.material.color = Color.white;
-
             
             monsterRig.velocity = new Vector3(0, 0); // 관성 지우기
             Transform dropTransform = transform;
@@ -177,11 +162,8 @@ public class MonsterComponent1 : MonoBehaviour
     public void TakeDamage(float damage)
     {
         isAttacked = true;
-
         Hp -= damage;
-        
         DeadCheck();
-        
         isAttacked = false;
     }
 
@@ -196,14 +178,11 @@ public class MonsterComponent1 : MonoBehaviour
     {
         if (collision.CompareTag("Bullet"))
         {
-
             isAttacked = true;
             Hp -= collision.GetComponent<BulletComponent>().damage;
             DeadCheck();
             isAttacked = false;
         }
-
-        
     }
 
     private void OnCollisionStay2D(Collision2D collision) // 일반 공격 데미지 처리
@@ -214,10 +193,8 @@ public class MonsterComponent1 : MonoBehaviour
         }
     }
 
-
     private void OnDrawGizmos() // 공격 범위 시각화 
     {
-        
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(pos.position, boxSize);
     }

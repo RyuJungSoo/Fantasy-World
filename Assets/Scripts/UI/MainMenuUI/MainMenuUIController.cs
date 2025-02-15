@@ -18,7 +18,6 @@ public class MainMenuUIController : MonoBehaviour
         if (curIndex >= PageObject.Length)
             curIndex = 0;
         PageObject[curIndex].active = true;
-    
     }
 
     public void PrevPage()

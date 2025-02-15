@@ -15,8 +15,6 @@ public class SkillArrowComponent : MonoBehaviour
         ArrowMove();
     }
 
-
-
     // Update is called once per frame
     void Update()
     {
@@ -42,9 +40,6 @@ public class SkillArrowComponent : MonoBehaviour
             ArrowMove();
             audioSource.PlayOneShot(moveAudio);
         }
-
-        
-
     }
 
     private void ArrowMove()
@@ -52,7 +47,5 @@ public class SkillArrowComponent : MonoBehaviour
         float x = Skills[index].GetComponent<RectTransform>().anchoredPosition.x;
         float y = Skills[index].GetComponent<RectTransform>().anchoredPosition.y + 51.16292f;
         gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, y);
-
-
     }
 }

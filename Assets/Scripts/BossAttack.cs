@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class BossAttack : MonoBehaviour
 {
-    
     private MonsterComponent monsterComponent;
     private Rigidbody2D monsterRig;
     private CapsuleCollider2D monsterCollider;
     private Animator monsterAnimator; // 몬스터의 애니메이터
     public GameObject Center;
-
 
     private float curTime;
     public float teleport_Range = 5f;
@@ -26,11 +24,9 @@ public class BossAttack : MonoBehaviour
 
     public ParticleSystem effect;
 
-
     // Start is called before the first frame update
     void Start()
     {
-        
         monsterComponent = GetComponent<MonsterComponent>();
         monsterRig = GetComponent<Rigidbody2D>();
         monsterAnimator = GetComponent<Animator>();
@@ -44,7 +40,6 @@ public class BossAttack : MonoBehaviour
         {
             if (GameManager.Instance.isBossStart == false)
             {
-                
                 return;
             }
 
@@ -56,7 +51,6 @@ public class BossAttack : MonoBehaviour
 
                 if (index <= 0 && Warp_cnt <= 4)
                     index = 1;
-
 
                 if(index == 1)
                     Teleport();
@@ -107,7 +101,6 @@ public class BossAttack : MonoBehaviour
      
     private void Bullet() // 탄막 소환 패턴
     {
-
         GameManager.Instance.Boss_playSoundEffect(1, 5);
         if (monsterComponent.isFreeze == true)
         {
@@ -120,7 +113,6 @@ public class BossAttack : MonoBehaviour
 
     private void BulletShot() // 탄막 쏘기 패턴
     {
-
         if (monsterComponent.isFreeze == true)
         {
             Warp_cnt = 4; // 중간에 빙결됬을 경우 다시 실행할 수 있게

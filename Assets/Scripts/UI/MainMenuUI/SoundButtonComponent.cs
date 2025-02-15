@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SoundButtonComponent : MonoBehaviour
 {
-
     public GameObject UI;
     public void OnClick()
     {

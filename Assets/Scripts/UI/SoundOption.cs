@@ -39,6 +39,4 @@ public class SoundOption : MonoBehaviour
         audioMixer.SetFloat("SFX", Mathf.Log10(SfxSlider.value) * 20);
         //audioMixer.SetFloat("SFX", SfxSlider.value);
     }
-
-
 }
